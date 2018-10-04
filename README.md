@@ -86,19 +86,24 @@ small and quick questions and will save more space and time for larger and more 
 
 # Requirements
 1. purpose
+
 The purpose of this application is to facilitate the class QA process and save more time for students, TA and professor.
 
 2. Intended Users
+
 This project is a prototype for self-service question and answer application and is most useful in class settings. As such, it will be 
 beneficial for professors, TAs, and college students.
 
 3. Project Scope
+
 This project allows students to get answer of small questions quickly from professors or TAs. Above all, we hope to provide a comfortable, fast, and fair classroom QA experiences.
 
 4. Product perspective
+
 This is a open source application developed using Clojure, which provides simple interface for classroom QA.
 
 5. Product Feature
+
 (1) Students can send their questions to professors and TAs.
 (2) TAs can respond to the questions students asked.
 (3) Professors and TAs have the option to broad cast one question and answer if they think the majority of the class would have the same questions.
