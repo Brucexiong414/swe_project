@@ -81,8 +81,7 @@ small and quick questions and will save more space and time for larger and more 
 ...It is easier for professor to see those question by seperating questions from other emails.
 
 ## Question 10:
-...piazza don't allow students' question to be pinned on top if the question is urgent.
-...I think piazza is a good platform for QA because students who have the same question don't need to ask the question again.
+...piazza don't allow students' question to be pinned on top if the question is urgent. ...I think piazza is a good platform for QA because students who have the same question don't need to ask the question again.
 ...piazza can't limit the number of questions student post. It is not fair if one student posts way more questions than others.
 
 # Requirements
