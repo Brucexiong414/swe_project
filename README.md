@@ -115,6 +115,10 @@ The complete development phases of the project is illustrated in the following f
 
 ![development process](https://user-images.githubusercontent.com/31359262/46516317-aa89ab80-c82e-11e8-84e2-d13411cb6933.jpg)
 
+I choose the waterfall model for the following reasons. First, this model allow deparmentalization and control. So, it is easy to trace a problem back to a phase and fix it, which can mitigate the risk of building the wrong thing as we proceed the development phases one by one. Second, the waterfall model is easily understandable and easy to use. It is also easy to manage the project due to the rigidity of the model. We can have a review process at each stage of the development phase to ensure that we are building the right thing and if our assumptions is incorrect, we can easily trace back to a previous stage and fix the issue.
+
+Each development phase is explained below:
+
 First, based on the user story, we gather the basic requirements for the application, which is specified above in the requirement section. The core requirement includes: 
 
 (1) Students can register for the office hour time.
@@ -126,11 +130,13 @@ First, based on the user story, we gather the basic requirements for the applica
 
 Second, we begin our design. 
 Data structure: A queue in sorted order by the time the student register for a office hour. A queue for urgent registration. A vector holds all student and a map that map a student's name to its corresponding phone number. A vector holds all TA's name and professor's name.
-workflow: 
+workflow: One time operation: studnets add themselves to the class roster. 
+The other processes, inputs and outputs are demonstrated in the figure below:
+![workflow](https://user-images.githubusercontent.com/31359262/46559221-57a70700-c8b5-11e8-9cf2-c29d59cd5695.jpg)
+
 User Interface: Students can be added to the class when they click the ENROLL button and type in their phone number.
 Students can see the number of people in queue in the page they choose to register for a office hour slot. 
-TA can click the button to notify the next student to be ready for the office hour and can click the other button to cancel its office hour.
-Student can check the box of "urgent question" to mark their registration for the office hour as urgent.
+TA can click the button to notify the next student to be ready for the office hour and can click the other button to cancel its office hour.Student can check the box of "urgent question" to mark their registration for the office hour as urgent.
 
 Possible failing condition:
 (1) If one student is notified to come to the office hour and never show up, other students in the queue can never have their question answered.
