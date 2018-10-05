@@ -1,14 +1,14 @@
-# Self-service QA application
+# Office Hour Self-service Check-in application
 
 # Project Overview
-Based on the interview, I found that many students are struggling with getting help on their homeworks and average students need to spend
+Based on the interview, I found that many students are struggling with getting help on their homework and average students need to spend
 about half an hour getting help on their homework for each class every week. Also, professor sometimes would not respond to email quickly,
 so we conclude the current question-answer process is not convenient enough. 
 
-Consequently, we come up with a project to build a self-service quuestion and answer machine to make this process more fairly and conveniently,
+Consequently, we come up with a project to build a self-service question and answer machine to make this process more fairly and conveniently,
 which would potentially increase students' study efficiency. This project is built upon the text messaging application. Students can directly 
 send their message to register the office hour, and get the information about the line. TA or professor can notify the next student in the line. The registration of student is sorted by the time they were asked to ensure the correct and fair order of answering those questions. Also, we plan to have an urgent question 
-functionality. We acknowledge that there are times that a question need to be answered quickly due to a variety of reasons. So, our application have a separate queue for urgent questions that is marked and pinnedon the top, which means they can go to the office hour first and their questions be addressed quickly. 
+functionality. We acknowledge that there are times that a question need to be answered quickly due to a variety of reasons. So, our application have a separate queue for urgent questions that is marked and pinned on the top, which means they can go to the office hour first and their questions be addressed quickly. 
 Every student can only have one opportunity to use the urgent question privilege each month. Also, if a question is asked multiple times, responders have the option to send this question's QA to every student in the class.
 
 We hope this application will streamline the class QA process and save more time for both students and responders (professors and TAs) while ensuring
@@ -115,7 +115,7 @@ The complete development phases of the project is illustrated in the following f
 
 ![development process](https://user-images.githubusercontent.com/31359262/46516317-aa89ab80-c82e-11e8-84e2-d13411cb6933.jpg)
 
-I choose the waterfall model for the following reasons. First, this model allow deparmentalization and control. So, it is easy to trace a problem back to a phase and fix it, which can mitigate the risk of building the wrong thing as we proceed the development phases one by one. Second, the waterfall model is easily understandable and easy to use. It is also easy to manage the project due to the rigidity of the model. We can have a review process at each stage of the development phase to ensure that we are building the right thing and if our assumptions is incorrect, we can easily trace back to a previous stage and fix the issue.
+I choose the waterfall model for the following reasons. First, this model allow departmentalization and control. So, it is easy to trace a problem back to a phase and fix it, which can mitigate the risk of building the wrong thing as we proceed the development phases one by one. Second, the waterfall model is easily understandable and easy to use. It is also easy to manage the project due to the rigidity of the model. We can have a review process at each stage of the development phase to ensure that we are building the right thing and if our assumptions is incorrect, we can easily trace back to a previous stage and fix the issue.
 
 Each development phase is explained below:
 
@@ -130,7 +130,8 @@ First, based on the user story, we gather the basic requirements for the applica
 
 Second, we begin our design. 
 Data structure: A queue in sorted order by the time the student register for a office hour. A queue for urgent registration. A vector holds all student and a map that map a student's name to its corresponding phone number. A vector holds all TA's name and professor's name.
-workflow: One time operation: studnets add themselves to the class roster. 
+
+workflow: One time operation: students add themselves to the class roster. 
 The other processes, inputs and outputs are demonstrated in the figure below:
 ![workflow](https://user-images.githubusercontent.com/31359262/46559221-57a70700-c8b5-11e8-9cf2-c29d59cd5695.jpg)
 
@@ -149,4 +150,19 @@ Then, we will begin code our application. We will utilize test-driven software d
 
 After we finished coding, we begin our testing. We use two kinds of testing strategy, the unit test and the integrated test. Through unit testing, we can exam whether one particular function's input and output are expected and through integrated test we know if the application meet our expectation in practice and systematically uncover the error associated with the interface. By combing these two testings, we can make sure our application works in unity.
 
+# Risk Mitigation
+
+1. We divide our development to small steps and fix problems and learn from progress as we go. In the meantime, we can redefine the direction of our project and learn from the project. We avoid locking into a process and building wrong application based on wrong assumption this way.
+
+2. Our development team will identify first the technical challenge, and some viability or uncertainty before start coding the application. So we can verify early on that those technical challenges are solvable and reduce the risk of large failure late in the project, which will cost much more.
+
+3. We will have our team meeting on a weekly basis to ensure communication is happening and everyone has clear expectation of what to build.
+4. In order to prevent the application from working in practice, we will test with a handful of users so that we can gain some insights  into the application's usability problem. We can exam if our user interface is well designed and if one feature is necessary or not.
+
+# Estimation Refinement  
+
+1. Perform time bounded experiment to understand how many tasks we can perform and how we can improve the estimation. 
+2. We will make our schedule relative. If one phase is delayed, it is easier to adjust the schedule of other phases.
+3. Set our delivery deadline to be three days before the actual deadline to accommodate unexpected changes or problems.
+4. We will make our application sustainable by having our team members focus on the quality and reliability of the software. Moreover, we will be committed to collecting the feedback from the our users and continuously improving the application and the way they work together.  
 
