@@ -153,9 +153,7 @@ After we finished coding, we begin our testing. We use two kinds of testing stra
 # Risk Mitigation
 
 1. We divide our development to small steps and fix problems and learn from progress as we go. In the meantime, we can redefine the direction of our project and learn from the project. We avoid locking into a process and building wrong application based on wrong assumption this way.
-
 2. Our development team will identify first the technical challenge, and some viability or uncertainty before start coding the application. So we can verify early on that those technical challenges are solvable and reduce the risk of large failure late in the project, which will cost much more.
-
 3. We will have our team meeting on a weekly basis to ensure communication is happening and everyone has clear expectation of what to build.
 4. In order to prevent the application from working in practice, we will test with a handful of users so that we can gain some insights  into the application's usability problem. We can exam if our user interface is well designed and if one feature is necessary or not.
 
