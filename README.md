@@ -113,7 +113,7 @@ This is a open source application developed using Clojure, which provides simple
 For this project, we choose the classical software waterfall model as our process.
 The complete development phases of the project is illustrated in the following figure: 
 
-![alt text](C:\Users\xiong\Desktop\CS_4278\1193120804.jpg)
+![development process](https://user-images.githubusercontent.com/31359262/46516317-aa89ab80-c82e-11e8-84e2-d13411cb6933.jpg)
 
 First, based on the user story, we gather the basic requirements for the application, which is specified above in the requirement section. The core requirement includes: 
 
