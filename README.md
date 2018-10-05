@@ -7,16 +7,13 @@ so we conclude the current question-answer process is not convenient enough.
 
 Consequently, we come up with a project to build a self-service quuestion and answer machine to make this process more fairly and conveniently,
 which would potentially increase students' study efficiency. This project is built upon the text messaging application. Students can directly 
-send their questions to the responder (professors or TAs), and the answer will be directly sent back to the student. The questions are sorted
-by the time they were asked to ensure the correct and fair order of answering those questions. Also, we plan to have an urgent question 
-functionality. We acknowledge that there are times that a question need to be answered quickly due to a variety of reasons. So, our application
-have a separate queue for urgent questions that is marked and pinnedon the top, which are seen by responders first and can be addressed quickly. 
-Every student can only have one opportunity to use the urgent question privilege each month. Also, if a question is asked multiple times, responders
-have the option to send this question's QA to every student in the class.
+send their message to register the office hour, and get the information about the line. TA or professor can notify the next student in the line. The registration of student is sorted by the time they were asked to ensure the correct and fair order of answering those questions. Also, we plan to have an urgent question 
+functionality. We acknowledge that there are times that a question need to be answered quickly due to a variety of reasons. So, our application have a separate queue for urgent questions that is marked and pinnedon the top, which means they can go to the office hour first and their questions be addressed quickly. 
+Every student can only have one opportunity to use the urgent question privilege each month. Also, if a question is asked multiple times, responders have the option to send this question's QA to every student in the class.
 
 We hope this application will streamline the class QA process and save more time for both students and responders (professors and TAs) while ensuring
 the process is fair for everyone. Based on the interview, this application is positively received because the application is especially suitable for 
-small and quick questions and will save more space and time for larger and more complex problems to be addressed in the office hour.
+small and quick questions and will save more space and time for larger.
 
 
 # Questions:
@@ -104,9 +101,18 @@ This is a open source application developed using Clojure, which provides simple
 
 5. Product Feature
 
-(1) Students can send their questions to professors and TAs.
-(2) TAs can respond to the questions students asked.
-(3) Professors and TAs have the option to broad cast one question and answer if they think the majority of the class would have the same questions.
-(4) Questions shown to professor is sorted in the order by the time asked.
-(5) The student has one chance per month to mark their question as urgent. As such, there are two question queues ordered by the time asked. The urgent one, which is pinned on top, and the other one is non-urgent question queue.
+(1) Students can register for the office hour time.
+(2) students can retrieve the queue information about the office hour.
+(3) Students can grade their TAs.
+(4) TA can update the queue and notify other students when they finish answering the question or canceling the office hour.
+(6) Registration information of students shown to professor and TA is sorted in the order by the time asked.
+(7) The student has one chance twice a month to mark their registration as urgent. As such, there are two registration queue. The urgent one, which is pinned on top, and the other one is non-urgent question queue.
+
+# Development Approach
+
+
+
+
+
+
 
