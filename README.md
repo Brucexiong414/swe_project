@@ -110,9 +110,37 @@ This is a open source application developed using Clojure, which provides simple
 
 # Development Approach
 
+For this project, we choose the classical software waterfall model as our process.
+The complete development phases of the project is illustrated in the following figure: 
 
+![alt text](C:\Users\xiong\Desktop\CS_4278\1193120804.jpg)
 
+First, based on the user story, we gather the basic requirements for the application, which is specified above in the requirement section. The core requirement includes: 
 
+(1) Students can register for the office hour time.
+(2) students can retrieve the queue information about the office hour.
+(3) Students can grade their TAs.
+(4) TA can update the queue and notify other students when they finish answering the question or canceling the office hour.
+(6) Registration information of students shown to professor and TA is sorted in the order by the time asked.
+(7) The student has one chance twice a month to mark their registration as urgent. As such, there are two registration queue. The urgent one, which is pinned on top, and the other one is non-urgent question queue.
 
+Second, we begin our design. 
+Data structure: A queue in sorted order by the time the student register for a office hour. A queue for urgent registration. A vector holds all student and a map that map a student's name to its corresponding phone number. A vector holds all TA's name and professor's name.
+workflow: 
+User Interface: Students can be added to the class when they click the ENROLL button and type in their phone number.
+Students can see the number of people in queue in the page they choose to register for a office hour slot. 
+TA can click the button to notify the next student to be ready for the office hour and can click the other button to cancel its office hour.
+Student can check the box of "urgent question" to mark their registration for the office hour as urgent.
+
+Possible failing condition:
+(1) If one student is notified to come to the office hour and never show up, other students in the queue can never have their question answered.
+They are handled by the timer feature. If a student haven't showed up in five minutes, he or she is automatically canceled. 
+
+(2) If the TA cancels his office hour at a time close to the start of the office hour time, many students who register the office hour will not be aware of it and will be disappointed to find out that the office hour is canceled when they visit TAs' office hour.
+This condition is handled by broadcasting the office hour canceling information to every student in the class to keep them informed.
+
+Then, we will begin code our application. We will utilize test-driven software development strategy to mitigate the risk of building the wrong application. Also, we make sure our code can be broken into small parts that are easy to test and easy to change so that if some of our initial assumptions are failing, we can quickly fix the problem. 
+
+After we finished coding, we begin our testing. We use two kinds of testing strategy, the unit test and the integrated test. Through unit testing, we can exam whether one particular function's input and output are expected and through integrated test we know if the application meet our expectation in practice and systematically uncover the error associated with the interface. By combing these two testings, we can make sure our application works in unity.
 
 
