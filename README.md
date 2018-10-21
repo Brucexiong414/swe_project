@@ -103,10 +103,8 @@ This is a open source application developed using Clojure, which provides simple
 
 (1) Students can register for the office hour time.
 (2) students can retrieve the queue information about the office hour.
-(3) Students can grade their TAs.
-(4) TA can update the queue and notify other students when they finish answering the question or canceling the office hour.
-(6) Registration information of students shown to professor and TA is sorted in the order by the time asked.
-(7) The student has one chance twice a month to mark their registration as urgent. As such, there are two registration queue. The urgent one, which is pinned on top, and the other one is non-urgent question queue.
+(3) TA can update the queue and notify other students when they finish answering the question or canceling the office hour.
+(4) Registration information of students shown to professor and TA is sorted in the order by the time asked.
 
 # Development Approach
 
@@ -123,10 +121,8 @@ First, based on the user story, we gather the basic requirements for the applica
 
 (1) Students can register for the office hour time.
 (2) students can retrieve the queue information about the office hour.
-(3) Students can grade their TAs.
-(4) TA can update the queue and notify other students when they finish answering the question or canceling the office hour.
-(6) Registration information of students shown to professor and TA is sorted in the order by the time asked.
-(7) The student has one chance twice a month to mark their registration as urgent. As such, there are two registration queue. The urgent one, which is pinned on top, and the other one is non-urgent question queue.
+(3) TA can update the queue and notify other students when they finish answering the question or canceling the office hour.
+(4) Registration information of students shown to professor and TA is sorted in the order by the time asked.
 
 Second, we begin our design. 
 Data structure: A queue in sorted order by the time the student register for a office hour. A queue for urgent registration. A vector holds all student and a map that map a student's name to its corresponding phone number. A vector holds all TA's name and professor's name.
