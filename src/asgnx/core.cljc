@@ -349,6 +349,8 @@
     (when (not= (get Queue x) user-id)
      (def res x)(recur (+ x 1)))) (def res (+ 1 res)) res)
 
+(defn query [experts {:keys [args user-id]}])
+
 ;; Asgn 3.
 ;;
 ;; @Todo: Create a function called "answer-question"
@@ -466,7 +468,7 @@
              "TA"   add-expert
              "register"      ask-experts
              "notify"   answer-question
-             "query" query-info})
+             "query" query})
 ;; Asgn 3.
 ;;
 ;; @Todo: Add mappings of the cmds "expert", "ask", and "answer" to
