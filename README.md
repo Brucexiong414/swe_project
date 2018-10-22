@@ -103,7 +103,7 @@ This is a open source application developed using Clojure, which provides simple
 
 (1) Students can register for the office hour time.
 (2) students can retrieve the queue information about the office hour.
-(3) TA can update the queue and notify other students when they finish answering the question or canceling the office hour.
+(3) TA can update the queue and notify other students when they finish answering the question.
 (4) Registration information of students shown to professor and TA is sorted in the order by the time asked.
 
 # Development Approach
@@ -121,7 +121,7 @@ First, based on the user story, we gather the basic requirements for the applica
 
 (1) Students can register for the office hour time.
 (2) students can retrieve the queue information about the office hour.
-(3) TA can update the queue and notify other students when they finish answering the question or canceling the office hour.
+(3) TA can update the queue and notify other students when they finish answering the question.
 (4) Registration information of students shown to professor and TA is sorted in the order by the time asked.
 
 Second, we begin our design. 
