@@ -175,54 +175,63 @@
   (get! (:state-mgr system) [:msgs to]))
 
 (def send-action-handlers
-  {:send action-send})
+  {:send action-send}
 
-(deftest handle-message-test
-  (testing "the integration test"
-    (let [ehdlrs (merge
-                   send-action-handlers
-                   kvstore/action-handlers)
-          state  (atom {})
-          smgr   (kvstore/create state)
-          system {:state-mgr smgr
-                  :effect-handlers ehdlrs}]
-      (is (= "There is no TA on that class."
-             (<!! (handle-message
-                    system
-                    "11111"
-                    "register computer science"))))
-      (is (= "11111 is now a teaching assistant on computer science."
-             (<!! (handle-message
-                    system
-                    "11111"
-                    "TA computer science"))))
-      (is (= "There are no TA on that class"
-             (<!! (handle-message
-                    system
-                    "22222"
-                    "register math"))))
-      (is (= "Succesfully register for an office hour slot. There are 0 students before you."
-             (<!! (handle-message
-                    system
-                    "22222"
-                    "register computer science"))))
-      (is (= "Succesfully register for an office hour slot. There are 1 students before you."
-             (<!! (handle-message
-                    system
-                    "33333"
-                    "register computer science"))))
-      (is (= "Your message was sent."
-             (<!! (handle-message
-                    system
-                    "11111"
-                    "notify"))))
-      (is (= "Your message was sent."
-             (<!! (handle-message
-                    system
-                    "11111"
-                    "notify"))))
-      (is (= "Your answer was sent."
-             (<!! (handle-message
-                   system
-                   "11111"
-                   "The queue is empty.")))))))
+  (deftest handle-message-test
+    (testing "the integration and handling of messages"
+      (let [ehdlrs (merge
+                     send-action-handlers
+                     kvstore/action-handlers)
+            state  (atom {})
+            smgr   (kvstore/create state)
+            system {:state-mgr smgr
+                    :effect-handlers ehdlrs}]
+        (is (= "There are no TAs on that class."
+               (<!! (handle-message
+                      system
+                      "test-user"
+                      "register math"))))
+        (is (= "test-user is now a teaching assistant on math."
+               (<!! (handle-message
+                      system
+                      "test-user"
+                      "TA math"))))
+        (is (= "test-user1 successfully register for an office hour slot on math, 0 people before you."
+               (<!! (handle-message
+                      system
+                      "test-user1"
+                      "register math"))))
+        (is (= "test-user2 successfully register for an office hour slot on math, 1 people before you."
+               (<!! (handle-message
+                      system
+                      "test-user2"
+                      "register math"))))
+        (is (= "1 people before you."
+               (<!! (handle-message
+                      system
+                      "test-user2"
+                      "query"))))
+        (is (= "Your message was sent."
+               (<!! (handle-message
+                     system
+                     "test-user"
+                     "notify"))))
+        (is (= "It's your turn."
+               (<!! (pending-send-msgs system "test-user1"))))
+        (is (= "0 people before you."
+               (<!! (handle-message
+                     system
+                     "test-user2"
+                     "query"))))
+        (is (= "Your message was sent."
+               (<!! (handle-message
+                     system
+                     "test-user"
+                     "notify"))))
+        (is (= "It's your turn."
+               (<!! (pending-send-msgs system "test-user2"))))
+        (is (= "The Queue is Empty."
+               (<!! (handle-message
+                     system
+                     "test-user"
+                     "notify"))))))))
