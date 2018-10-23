@@ -7,15 +7,13 @@ so we conclude the current question-answer process is not convenient enough.
 
 Consequently, we come up with a project to build a self-service question and answer machine to make this process more fairly and conveniently,
 which would potentially increase students' study efficiency. This project is built upon the text messaging application. Students can directly 
-send their message to register the office hour, and get the information about the line. TA or professor can notify the next student in the line. The registration of student is sorted by the time they were asked to ensure the correct and fair order of answering those questions. Also, we plan to have an urgent question 
-functionality. We acknowledge that there are times that a question need to be answered quickly due to a variety of reasons. So, our application have a separate queue for urgent questions that is marked and pinned on the top, which means they can go to the office hour first and their questions be addressed quickly. 
-Every student can only have one opportunity to use the urgent question privilege each month. Also, if a question is asked multiple times, responders have the option to send this question's QA to every student in the class.
+send their message to register the office hour, and get the information about the line. TA or professor can notify the next student in the line. The registration of student is sorted by the time they were asked to ensure the correct and fair order of answering those questions.
 
 We hope this application will streamline the class QA process and save more time for both students and responders (professors and TAs) while ensuring
 the process is fair for everyone. Based on the interview, this application is positively received because the application is especially suitable for 
-small and quick questions and will save more space and time for larger.
+small and quick questions and will save more space and time for larger problemsk.
 
-
+Also
 # Questions:
   1. Where do you get help if you have problems with homework?
   2. Why do you do this in this way?
@@ -103,10 +101,8 @@ This is a open source application developed using Clojure, which provides simple
 
 (1) Students can register for the office hour time.
 (2) students can retrieve the queue information about the office hour.
-(3) Students can grade their TAs.
-(4) TA can update the queue and notify other students when they finish answering the question or canceling the office hour.
-(6) Registration information of students shown to professor and TA is sorted in the order by the time asked.
-(7) The student has one chance twice a month to mark their registration as urgent. As such, there are two registration queue. The urgent one, which is pinned on top, and the other one is non-urgent question queue.
+(3) TA can update the queue and notify other students when they finish answering the question.
+(4) Registration information of students shown to professor and TA is sorted in the order by the time asked.
 
 # Development Approach
 
@@ -123,25 +119,22 @@ First, based on the user story, we gather the basic requirements for the applica
 
 (1) Students can register for the office hour time.
 (2) students can retrieve the queue information about the office hour.
-(3) Students can grade their TAs.
-(4) TA can update the queue and notify other students when they finish answering the question or canceling the office hour.
-(6) Registration information of students shown to professor and TA is sorted in the order by the time asked.
-(7) The student has one chance twice a month to mark their registration as urgent. As such, there are two registration queue. The urgent one, which is pinned on top, and the other one is non-urgent question queue.
+(3) TA can update the queue and notify other students when they finish answering the question.
+(4) Registration information of students shown to professor and TA is sorted in the order by the time asked.
 
 Second, we begin our design. 
-Data structure: A queue in sorted order by the time the student register for a office hour. A queue for urgent registration. A vector holds all student and a map that map a student's name to its corresponding phone number. A vector holds all TA's name and professor's name.
+Data structure: A queue to store the phone number of students who registeded the office hour in sorted order by the registration time. A map that store all TA's phone number.
 
-workflow: One time operation: students add themselves to the class roster. 
-The other processes, inputs and outputs are demonstrated in the figure below:
+workflow: 
+The processes, inputs and outputs are demonstrated in the figure below:
 ![workflow](https://user-images.githubusercontent.com/31359262/46559221-57a70700-c8b5-11e8-9cf2-c29d59cd5695.jpg)
 
-User Interface: Students can be added to the class when they click the ENROLL button and type in their phone number.
 Students can see the number of people in queue in the page they choose to register for a office hour slot. 
-TA can click the button to notify the next student to be ready for the office hour and can click the other button to cancel its office hour.Student can check the box of "urgent question" to mark their registration for the office hour as urgent.
+TA can click the button to notify the next student to be ready for the office hour and can click the other button to cancel its office hour.
 
 Possible failing condition:
 (1) If one student is notified to come to the office hour and never show up, other students in the queue can never have their question answered.
-They are handled by the timer feature. If a student haven't showed up in five minutes, he or she is automatically canceled. 
+They are handled by the timer feature. If a student haven't showed up in five minutes, he or she is automatically canceled.Or, TA can notify the next student, in which case this student is automatically out of the queue.
 
 (2) If the TA cancels his office hour at a time close to the start of the office hour time, many students who register the office hour will not be aware of it and will be disappointed to find out that the office hour is canceled when they visit TAs' office hour.
 This condition is handled by broadcasting the office hour canceling information to every student in the class to keep them informed.
@@ -150,12 +143,25 @@ Then, we will begin code our application. We will utilize test-driven software d
 
 After we finished coding, we begin our testing. We use two kinds of testing strategy, the unit test and the integrated test. Through unit testing, we can exam whether one particular function's input and output are expected and through integrated test we know if the application meet our expectation in practice and systematically uncover the error associated with the interface. By combing these two testings, we can make sure our application works in unity.
 
+After we deploy the application on Twilio, we test our application using the following steps:
+
+1. One person registers as TA and 3 persons register as students.
+2. 3 students will register for a office hour slot one by one.
+3. Each student now retrieve the information about the queue. The first student registered should see that there is no student before him. The second student will see there is one student before. The third student will see there are two students before.
+4. Then the TA will notify the first student, and the first student will see a message "It is your turn" on the phone.
+5. Then, there is only 2 students in the queue. When they ask for the queue information, the first student will see there is not student before and the second student will see there is one student before.
+6. Then the TA will notify the second student, and the second student will see a message "It is your turn" on the phone.
+7. Next, there is only one student in the queue. And when this student ask for the queue information, the message will be "0 student before you."
+8. When the TA notify once again, the first student will see "It is your turn" on the phone.
+9. As there is not student in the queue, when the TA notify again, TA will see a message "The queue is empty on his phone".
+10. We see the expected output at every step so we believe our application functions properly.
+
 # Risk Mitigation
 
 1. We divide our development to small steps and fix problems and learn from progress as we go. In the meantime, we can redefine the direction of our project and learn from the project. We avoid locking into a process and building wrong application based on wrong assumption this way.
 2. Our development team will identify first the technical challenge, and some viability or uncertainty before start coding the application. So we can verify early on that those technical challenges are solvable and reduce the risk of large failure late in the project, which will cost much more.
 3. We will have our team meeting on a weekly basis to ensure communication is happening and everyone has clear expectation of what to build.
-4. In order to prevent the application from working in practice, we will test with a handful of users so that we can gain some insights  into the application's usability problem. We can exam if our user interface is well designed and if one feature is necessary or not.
+4. In order for the application to work in practice, we will test with a handful of users so that we can gain some insights  into the application's usability problem. We can exam if our user interface is well designed and if one feature is necessary or not.
 
 # Estimation Refinement  
 
@@ -163,4 +169,3 @@ After we finished coding, we begin our testing. We use two kinds of testing stra
 2. We will make our schedule relative. If one phase is delayed, it is easier to adjust the schedule of other phases.
 3. Set our delivery deadline to be three days before the actual deadline to accommodate unexpected changes or problems.
 4. We will make our application sustainable by having our team members focus on the quality and reliability of the software. Moreover, we will be committed to collecting the feedback from the our users and continuously improving the application and the way they work together.  
-
