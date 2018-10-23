@@ -7,15 +7,13 @@ so we conclude the current question-answer process is not convenient enough.
 
 Consequently, we come up with a project to build a self-service question and answer machine to make this process more fairly and conveniently,
 which would potentially increase students' study efficiency. This project is built upon the text messaging application. Students can directly 
-send their message to register the office hour, and get the information about the line. TA or professor can notify the next student in the line. The registration of student is sorted by the time they were asked to ensure the correct and fair order of answering those questions. Also, we plan to have an urgent question 
-functionality. We acknowledge that there are times that a question need to be answered quickly due to a variety of reasons. So, our application have a separate queue for urgent questions that is marked and pinned on the top, which means they can go to the office hour first and their questions be addressed quickly. 
-Every student can only have one opportunity to use the urgent question privilege each month. Also, if a question is asked multiple times, responders have the option to send this question's QA to every student in the class.
+send their message to register the office hour, and get the information about the line. TA or professor can notify the next student in the line. The registration of student is sorted by the time they were asked to ensure the correct and fair order of answering those questions.
 
 We hope this application will streamline the class QA process and save more time for both students and responders (professors and TAs) while ensuring
 the process is fair for everyone. Based on the interview, this application is positively received because the application is especially suitable for 
-small and quick questions and will save more space and time for larger.
+small and quick questions and will save more space and time for larger problemsk.
 
-
+Also
 # Questions:
   1. Where do you get help if you have problems with homework?
   2. Why do you do this in this way?
